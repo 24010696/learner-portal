@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  button, 
+  [role="button"], 
+  input[type="file"] + span,
+  a[href] {
+    min-height: 44px; /* Apple/Google touch target guideline */
+    min-width: 44px;
+  }
+  
+  /* Make tab buttons easier to tap */
+  .flex.gap-2 button {
+    padding: 0.75rem 1rem;
+  }
+}
