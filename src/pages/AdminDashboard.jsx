@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import LogoutButton from '../components/LogoutButton'
-import MobileHeader from '../components/MobileHeader'  // ✅ Add this line
+
 const SUBJECTS = ['Mathematics (Pure)', 'Mathematics (Lit)', 'Physics', 'Geography']
 const GRADES = [10, 11, 12]
 
@@ -75,7 +75,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      <MobileHeader title="Admin Dashboard" />
+      
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">👨‍🏫 Admin Dashboard</h1>
         <LogoutButton />
