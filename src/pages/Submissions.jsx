@@ -67,7 +67,7 @@ export default function Submissions() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <MobileHeader title="My Assignments" />
+     
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">📝 My Assignments</h1>
         <LogoutButton />
