@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import LogoutButton from '../components/LogoutButton'
-import MobileHeader from '../components/MobileHeader'
+
 export default function StudentDashboard() {
   const navigate = useNavigate()
   const { profile } = useAuth()
@@ -43,7 +43,7 @@ export default function StudentDashboard() {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-     <MobileHeader title={`Grade ${profile?.grade} Dashboard`} />
+   
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
         <div>
