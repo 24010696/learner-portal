@@ -49,10 +49,20 @@ export default function AdminDashboard() {
       const { data: { publicUrl } } = supabase.storage.from('content').getPublicUrl(filePath)
 
       const tableName = form.type === 'note' ? 'notes' : 'assignments'
-      const { error: dbErr } = await supabase.from(tableName).insert({
-        title: form.title.trim(), subject: form.subject, grade: Number(form.grade),
-        due_date: form.due_date, file_url: publicUrl, uploaded_by: user.id
-      })
+      
+      // ✅ Build insert data dynamically — only add due_date for assignments
+      const insertData = {
+        title: form.title.trim(),
+        subject: form.subject,
+        grade: Number(form.grade),
+        file_url: publicUrl,
+        uploaded_by: user.id
+      }
+      if (form.type === 'assignment' && form.due_date) {
+        insertData.due_date = form.due_date
+      }
+
+      const { error: dbErr } = await supabase.from(tableName).insert(insertData)
       if (dbErr) throw dbErr
 
       setSuccess('✅ Uploaded!')
@@ -75,7 +85,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">👨‍🏫 Admin Dashboard</h1>
         <LogoutButton />
@@ -141,11 +150,14 @@ export default function AdminDashboard() {
         <h2 className="text-xl font-semibold mb-4">📝 Grade Submissions</h2>
         <SimpleGrading />
       </div>
+
+      {/* 🔧 Fix Student Profile Tool */}
+      <FixStudentProfile />
     </div>
   )
 }
 
-// 📊 Analytics Component (Real student count & subject distribution)
+// 📊 Analytics Component
 function AdminAnalytics() {
   const [stats, setStats] = useState({ total: 0, subjects: {}, loading: true })
 
@@ -183,7 +195,7 @@ function AdminAnalytics() {
   )
 }
 
-// 📝 Grading Component (Shows names + enrolled subjects)
+// 📝 Grading Component
 function SimpleGrading() {
   const { user } = useAuth()
   const [submissions, setSubmissions] = useState([])
@@ -242,7 +254,10 @@ function SimpleGrading() {
         </div>
       ))}
     </div>
-  )// 🔧 Fix Student Profile (Admin tool — no SQL needed)
+  )
+}
+
+// 🔧 Fix Student Profile (Admin tool — no SQL needed)
 function FixStudentProfile() {
   const [email, setEmail] = useState('')
   const [grade, setGrade] = useState('10')
@@ -278,5 +293,4 @@ function FixStudentProfile() {
       {message && <p className="text-xs mt-2 text-blue-800">{message}</p>}
     </div>
   )
-}
 }

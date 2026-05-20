@@ -1,16 +1,68 @@
-# React + Vite
+# 📚 Limpopo Extra Lessons - Learner Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack, mobile-responsive learning platform for Grade 10-12 students in Limpopo. Built with React, Supabase, and deployed on Netlify.
 
-Currently, two official plugins are available:
+🌐 **Live Demo**: https://gleaming-mochi-bf5c6d.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 👨‍🎓 For Students
+- 🔐 Secure registration & login with email verification
+- 📖 Browse/download subject notes (PDF) filtered by grade & subject
+- 📝 Submit assignments with PDF upload
+- ⏰ View assignment deadlines + status badges:
+  - ✅ Submitted on time
+  - ⚠️ Submitted late
+  - ❌ Missing (past due)
+  - ⏳ Open (not yet submitted)
+- 🏆 View graded marks + progress tracker per subject
+- 📱 Fully responsive mobile UI with sticky header & touch-friendly buttons
 
-## Expanding the ESLint configuration
+### 👨‍🏫 For Admins (Teachers)
+- 📤 Upload notes & assignments with due dates
+- 🗑️ Manage content: view, download, delete
+- 📊 Real-time analytics:
+  - Total registered learners
+  - Most enrolled subject
+  - Subject distribution breakdown
+- 📝 Grade submissions with student names + enrolled subjects visible
+- 🔧 Fix student profiles via UI (no SQL needed)
+- 👥 View all submissions in one dashboard
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔐 Security & Reliability
+- Supabase Auth with secure password hashing
+- Role-based access control (student vs admin routing)
+- Environment variables for sensitive config
+- Auto-profile creation on signup (grade, subjects, role)
+- Persistent sessions across page refreshes
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | React 18 + Vite + Tailwind CSS |
+| **Backend** | Supabase (Auth, PostgreSQL, Storage) |
+| **Deployment** | Netlify (drag-and-drop or Git auto-deploy) |
+| **State** | React Context + Hooks |
+| **Routing** | React Router v6 |
+| **Styling** | Tailwind CSS (mobile-first, responsive) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ (`node -v`)
+- npm or yarn
+- Supabase account (free tier)
+- Netlify account (free tier)
+
+### 1️⃣ Clone & Install
+```bash
+git clone https://github.com/YOUR_USERNAME/learner-portal.git
+cd learner-portal
+npm install
