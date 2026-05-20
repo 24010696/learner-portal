@@ -63,6 +63,6 @@ A full-stack, mobile-responsive learning platform for Grade 10-12 students in Li
 
 ### 1️⃣ Clone & Install
 ```bash
-git clone https://github.com/YOUR_USERNAME/learner-portal.git
+git clone https://github.com/24010696/learner-Portal.git
 cd learner-portal
 npm install
